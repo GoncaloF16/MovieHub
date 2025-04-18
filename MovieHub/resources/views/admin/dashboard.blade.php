@@ -28,7 +28,7 @@
                                 <td>{{ $movie->titulo }}</td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-1">
-                                        <a href="" class="btn btn-sm btn-primary">
+                                        <a href="{{route('admin.movie.show', ['id' => $movie->id])}}" class="btn btn-sm btn-primary">
                                             <i class="bi bi-eye"></i> Ver
                                         </a>
                                         <a href="" class="btn btn-sm btn-warning">Editar</a>

@@ -9,6 +9,7 @@ Route::get('/', [HomeController::class, 'index'])-> name('home');
 Route::get('movie/show/{id}', [HomeController::class, 'showMovie'])-> name('movie.show');
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])-> name('admin.dashboard');
+Route::get('admin/movie/show/{id}', [AdminController::class, 'showMovieDetails'])-> name('admin.movie.show');
 
 //Route::view('/login', 'auth.login')->name('login');
 //Route::view('/register', 'auth.register')->name('register');

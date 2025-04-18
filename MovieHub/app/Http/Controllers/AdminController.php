@@ -16,4 +16,10 @@ class AdminController extends Controller
         }
         return view('admin.dashboard', compact('movies'));
     }
+
+    public function showMovieDetails($id) {
+        $movie = DB::table('filmes')->where('id', $id)->first();
+
+        return view('admin.movie_details', compact('movie'));
+    }
 }

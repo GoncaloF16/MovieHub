@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Admin Filmes</a>
+            <a class="navbar-brand" href="{{route('admin.dashboard')}}">Admin Filmes</a>
         </div>
     </nav>
 
