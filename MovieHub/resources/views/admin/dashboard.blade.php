@@ -1,6 +1,23 @@
 @extends('layouts.admin_layout')
 
 @section('content')
+@if (session('add'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('add') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @elseif (session('delete'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('delete') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif (session('update'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ session('update') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+@endif
+
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-12 px-md-4 pt-4">
@@ -8,7 +25,7 @@
                 <h1 class="h2">Filmes</h1>
                 <div class="d-flex gap-2">
                     <a href="{{route('home')}}" class="btn btn-secondary"> Página Principal </a>
-                    <a href="" class="btn btn-primary">Adicionar Filme</a>
+                    <a href="{{route('admin.movie.add')}}" class="btn btn-primary">Adicionar Filme</a>
                 </div>
             </div>
 
@@ -31,12 +48,7 @@
                                         <a href="{{route('admin.movie.show', ['id' => $movie->id])}}" class="btn btn-sm btn-primary">
                                             <i class="bi bi-eye"></i> Ver
                                         </a>
-                                        <a href="" class="btn btn-sm btn-warning">Editar</a>
-                                        <form action="" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja apagar?')">Apagar</button>
-                                        </form>
+                                        <a href="{{  route('admin.movie.delete', $movie->id ) }}"  class="btn btn-sm btn-danger">Apagar</a>
                                     </div>
                                 </td>
                             </tr>

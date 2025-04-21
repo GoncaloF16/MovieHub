@@ -4,7 +4,7 @@
     <br>
     <h5> Detalhes do Filme: {{ $movie ->titulo }} </h5> <br>
 
-<form method="POST" action="">
+<form method="POST" action="{{route('admin.movie.update')}}">
     @csrf
     @method('PUT')
     <input type="hidden" name="id" value="{{ $movie ->id }}">
@@ -39,6 +39,10 @@
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Sinopse</label>
         <input required name="sinopse" value ="{{ $movie ->sinopse }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Rating IMDB</label>
+        <input required name="imdb_rating" value ="{{ $movie ->imdb_rating }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
         <button type="submit" class="btn btn-warning">Atualizar</button>
     </form>
