@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Filme extends Model
 {
@@ -22,4 +23,10 @@ class Filme extends Model
         'genero',
         'realizador'
     ];
+
+    public function favoritos()
+    {
+        return $this->belongsToMany(User::class, 'favoritos')->withTimestamps();
+    }
+    
 }

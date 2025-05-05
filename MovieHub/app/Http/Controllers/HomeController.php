@@ -24,10 +24,10 @@ class HomeController extends Controller
 
 
     public function showMovie($titulo) {
-        $filme = DB::table('filmes')
-            -> where('titulo', $titulo)
-            -> first();
+        $filme = Filme::where('titulo', $titulo)->firstOrFail();
+
         return view('movies.show_movie', compact('filme'));
     }
+
 
 }

@@ -8,6 +8,12 @@ footer{
     background-color: #333 !important;
 }
 
+table{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
 .footer-link {
     color: #bbbbbb;
     text-decoration: none;
@@ -22,6 +28,41 @@ footer{
 
 body {
     background-color: #f8f9fa;
+}
+
+.btn-favorito-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.btn-favorito {
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.btn-favorito .material-icons {
+    font-size: 24px; /* Tamanho do ícone */
+    color: #555; /* Cor padrão */
+    transition: color 0.3s ease; /* Transição suave ao mudar de cor */
+}
+
+.btn-favorito:hover .material-icons {
+    color: #555; /* Cor quando o usuário passar o rato */
 }
 
 a {

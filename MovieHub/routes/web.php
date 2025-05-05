@@ -22,6 +22,12 @@ Route::put('admin/movie/update', [AdminController::class, 'updateMovie'])-> name
 Route::get('/profile', [ProfileController::class, 'showUser'])->name('user.show');
 Route::put('/profile/update', [ProfileController::class, 'updateUser'])-> name('user.update');
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/movies/{id}/favorite', [ProfileController::class, 'toggleFavorito'])->name('filmes.favorito');
+});
+Route::get('/my-favorites', [ProfileController::class, 'meusFavoritos'])->name('filmes.favoritos.lista')->middleware('auth');
+
+
 Route::get('/register', [AuthController::class, 'registerForm']) -> name('register');
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register.user');
 

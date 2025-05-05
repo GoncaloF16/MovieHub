@@ -24,6 +24,12 @@
                 </div>
             </div>
         @endif
-    </div>
+</div>
+@auth
+    <a href="{{ route('filmes.favoritos.lista') }}"
+        class="btn btn-dark rounded-circle btn-favorito-fixed">
+        <span class="material-icons" style="font-size: 22px; color: white;">favorite</span>
+    </a>
+@endauth
 @endsection
 

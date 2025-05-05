@@ -16,8 +16,21 @@
             <p><strong>Gênero:</strong> {{ $filme->genero }}</p>
             <p><strong>Duração:</strong> {{ $filme->duracao }} minutos</p>
             <p><strong>Lançamento:</strong> {{ $filme->lancamento }}</p>
+            <br>
+            @auth
+            <form action="{{ route('filmes.favorito', $filme->id) }}" method="POST" class="d-flex align-items-center gap-2">
+                @csrf
+                <span>Adicionar aos favoritos: </span>
+                <button type="submit" class="btn btn-favorito">
+                    <span class="material-icons {{ auth()->user()->favoritos->contains($filme->id) ? 'text-danger' : '' }}">favorite</span>
+                </button>
+            </form>
+            @endauth
         </div>
-    </div>
+
+
+
+
 
     <div class="row mt-5">
         <div class="col-12">
