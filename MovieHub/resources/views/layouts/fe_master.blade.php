@@ -16,7 +16,7 @@
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">MovieHub</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
@@ -38,7 +38,6 @@
                         </button>
                     </form>
 
-
                     <div class="d-flex align-items-center gap-2">
                         <form method="GET" action="{{ route('home') }}" class="d-flex align-items-center">
                             <input type="hidden" name="search" value="{{ request('search') }}">
@@ -53,11 +52,49 @@
                                 <span id="darkModeIcon" class="material-symbols-outlined">dark_mode</span>
                             </button>
                         </div>
-                        <!-- <button class="btn btn-outline-light btn-sm">🔔</button>   !-->
-                        <!--   <button class="btn btn-outline-light btn-sm">👤</button>   !-->
+
+                        @if (Route::has('login'))
+                        <nav class="flex items-center justify-end gap-4">
+                            @auth
+                            <div class="d-flex align-items-center gap-2">
+                            <a href="{{ route('user.show') }}" class="d-flex align-items-center gap-2 px-3 py-1 rounded-circle hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                                <img
+                                    src="{{ Auth::user()->image ? asset('storage/' . Auth::user()->image) : asset('images/defaultuser.png') }}"
+                                    alt="Foto de perfil"
+                                    class="img-fluid rounded-circle"
+                                    style="width: 32px; height: 32px; object-fit: cover;"
+                                >
+                                <span class="text-sm" style="color: var(--bs-body-color);">
+                                    {{ Auth::user()->name }}
+                                </span>
+                            </a>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger d-flex align-items-center gap-1">
+                                    <span class="material-icons">logout</span>
+
+                                </button>
+                            </form>
+                        </div>
+
+                            @else
+
+                            <a href="{{ route('login') }}" class="d-flex align-items-center gap-2 px-3 py-1 rounded-circle hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                                <img
+                                    src="https://www.transparentpng.com/download/user/gray-user-profile-icon-png-fP8Q1P.png"
+                                    alt="Foto de perfil"
+                                    class="img-fluid rounded-circle"
+                                    style="width: 32px; height: 32px; object-fit: cover;"
+                                >
+                            </a>
+                            @endauth
+                        </nav>
+                        @endif
                     </div>
                 </div>
             </div>
+
           </nav>
     </header>
     @yield('content')

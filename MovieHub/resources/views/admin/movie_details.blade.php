@@ -46,5 +46,5 @@
     </div>
         <button type="submit" class="btn btn-warning">Atualizar</button>
     </form>
-
+    <br>
 @endsection

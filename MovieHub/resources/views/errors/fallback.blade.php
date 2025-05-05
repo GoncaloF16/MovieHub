@@ -6,7 +6,7 @@
             <div class="col-md-6 text-center">
                 <img src="{{ asset('images/fallbackimage.png') }}" alt="404 Not Found" class="img-fluid mb-4">
                 <p>Desculpe, a página que está a procurar não existe.</p>
-                <a href="{{ url('/') }}" class="btn btn-primary">Voltar para a página inicial</a>
+                <a href="{{ route('home') }}" class="btn btn-primary">Voltar para a página inicial</a>
                 <br> <br>
             </div>
         </div>

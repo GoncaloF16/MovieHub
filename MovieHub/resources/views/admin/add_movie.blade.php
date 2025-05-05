@@ -44,5 +44,5 @@
     </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
-
+    <br>
 @endsection
