@@ -115,6 +115,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/theme-toggle.js') }}"></script>
+    <script src="{{ asset('js/clickable-row.js') }}"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

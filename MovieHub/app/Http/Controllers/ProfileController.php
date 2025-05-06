@@ -66,6 +66,7 @@ class ProfileController extends Controller
             ->join('filmes', 'favoritos.filme_id', '=', 'filmes.id')
             ->where('favoritos.user_id', $userId)
             ->select('filmes.*')
+            ->orderBy('filmes.titulo', 'asc')
             ->get();
 
     return view('movies.favorites', compact('filmes'));

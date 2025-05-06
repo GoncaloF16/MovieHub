@@ -2,7 +2,19 @@
 @section('content')
 
 <div class="container mt-3">
-        <h3 class="text-center mb-4">Filmes em Destaque</h3>
+    <div class="d-flex align-items-center mb-4 w-60">
+        @auth
+            @if (auth()->user()->user_type == 1)
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary me-auto">
+                    Dashboard
+                </a>
+            @endif
+        @endauth
+
+        <h3 class="mb-0 flex-grow-1 text-center">Filmes em Destaque</h3>
+        
+    </div>
+
         @if($filmes->isEmpty())
             <p class="text-center mt-4">Nenhum filme encontrado.</p>
         @else

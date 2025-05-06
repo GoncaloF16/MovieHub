@@ -62,7 +62,7 @@ body {
 }
 
 .btn-favorito:hover .material-icons {
-    color: #555; /* Cor quando o usuário passar o rato */
+    color: #e74c3c ; /* Cor quando o usuário passar o rato */
 }
 
 a {
