@@ -76,6 +76,13 @@
 
                                 </button>
                             </form>
+                            @auth
+                                @if (auth()->user()->user_type == 1)
+                                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary me-auto d-flex align-items-center gap-2">
+                                        <span class="material-icons">settings</span>
+                                    </a>
+                                @endif
+                            @endauth
                         </div>
 
                             @else
@@ -116,6 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/theme-toggle.js') }}"></script>
     <script src="{{ asset('js/clickable-row.js') }}"></script>
+    <script src="{{ asset('js/dynamic-footer.js') }}"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

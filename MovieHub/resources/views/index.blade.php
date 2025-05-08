@@ -3,20 +3,15 @@
 
 <div class="container mt-3">
     <div class="d-flex align-items-center mb-4 w-60">
-        @auth
-            @if (auth()->user()->user_type == 1)
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary me-auto">
-                    Dashboard
-                </a>
-            @endif
-        @endauth
 
         <h3 class="mb-0 flex-grow-1 text-center">Filmes em Destaque</h3>
-        
+
     </div>
 
         @if($filmes->isEmpty())
-            <p class="text-center mt-4">Nenhum filme encontrado.</p>
+            <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+                <p class="text-center mt-4">Nenhum filme encontrado.</p>
+            </div>
         @else
             <div class="row justify-content-center">
                 @foreach($filmes as $filme)

@@ -24,8 +24,12 @@
             <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h2">Filmes</h1>
                 <div class="d-flex gap-2">
-                    <a href="{{route('home')}}" class="btn btn-secondary"> Página Principal </a>
-                    <a href="{{route('admin.movie.add')}}" class="btn btn-primary">Adicionar Filme</a>
+                    <a href="{{ route('home') }}" class="btn btn-secondary d-flex align-items-center gap-2" title="Página Principal">
+                        <span class="material-icons">home</span>
+                    </a>
+                    <a href="{{ route('admin.movie.add') }}" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="bi bi-plus-lg"></i> Adicionar Filme
+                    </a>
                 </div>
             </div>
 
@@ -48,7 +52,9 @@
                                         <a href="{{route('admin.movie.show', ['id' => $movie->id])}}" class="btn btn-sm btn-primary">
                                             <i class="bi bi-eye"></i> Ver
                                         </a>
-                                        <a href="{{  route('admin.movie.delete', $movie->id ) }}"  class="btn btn-sm btn-danger">Apagar</a>
+                                        <a href="{{ route('admin.movie.delete', $movie->id) }}" class="btn btn-sm btn-danger d-flex align-items-center gap-1">
+                                            <i class="bi bi-trash"></i> Apagar
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

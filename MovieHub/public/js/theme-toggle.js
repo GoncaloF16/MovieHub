@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const icon = document.getElementById("darkModeIcon");
     const html = document.documentElement;
     const body = document.body;
-    const table = document.getElementById("favoritesTable"); // Seleciona a tabela
+    const table = document.getElementById("favoritesTable");
 
     function setTheme(theme) {
         html.setAttribute("data-bs-theme", theme);
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const navbar = document.getElementById("mainNavbar");
         const footer = document.getElementById("mainFooter");
 
-        // Aplica a cor de fundo na tabela
         if (table) {
             if (theme === "dark") {
                 table.classList.add("table-dark");
