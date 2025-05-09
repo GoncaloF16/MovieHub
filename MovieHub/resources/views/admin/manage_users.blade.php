@@ -21,46 +21,33 @@
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-12 px-md-4 pt-4">
-            <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Filmes</h1>
-                <div class="d-flex gap-2">
-                    <a href="{{ route('home') }}" class="btn btn-secondary d-flex align-items-center gap-2" title="Página Principal">
-                        <span class="material-icons">home</span>
-                    </a>
-                    <a href="{{ route('admin.users.list') }}" class="btn btn-warning d-flex align-items-center gap-2">
-                        Listar Utilizadores
-                    </a>
-                    <a href="{{ route('admin.movie.add') }}" class="btn btn-primary d-flex align-items-center gap-2">
-                        <i class="bi bi-plus-lg"></i> Adicionar Filme
-                    </a>
-                </div>
-            </div>
-
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
-                            <th>Título</th>
+                            <th>Name</th>
+                            <th>Email</th>
                             <th class="text-end">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($movies as $movie)
+                        @foreach($users as $user)
                             <tr>
-                                <td>{{ $movie->id }}</td>
-                                <td>{{ $movie->titulo }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-1">
-                                        <a href="{{route('admin.movie.show', ['id' => $movie->id])}}" class="btn btn-sm btn-primary">
+                                        <a href="{{route('admin.users.show', ['id' => $user->id])}}" class="btn btn-sm btn-primary">
                                             <i class="bi bi-eye"></i> Ver
                                         </a>
                                         <button type="button"
                                             class="btn btn-sm btn-danger d-flex align-items-center gap-1"
                                             data-bs-toggle="modal"
                                             data-bs-target="#confirmDeleteModal"
-                                            data-user-name="{{ $movie->titulo }}"
-                                            data-delete-url="{{ route('admin.movie.delete', $movie->id) }}">
+                                            data-user-name="{{ $user->name }}"
+                                            data-delete-url="{{ route('admin.users.delete', $user->id) }}">
                                             <i class="bi bi-trash"></i> Apagar
                                         </button>
                                     </div>
@@ -83,7 +70,7 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
         <div class="modal-body">
-          Tens a certeza que queres apagar o filme <strong id="modalUserName">...</strong>?<br>
+          Tens a certeza que queres apagar o utilizador <strong id="modalUserName">...</strong>?<br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -96,4 +83,5 @@
       </div>
     </div>
   </div>
+
 @endsection

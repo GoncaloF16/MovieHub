@@ -91,4 +91,41 @@ class AdminController extends Controller
             ]);
         return redirect() -> route('admin.dashboard') -> with('update', 'Movie updated successfully!');
     }
+
+    public function listUsers() {
+        $users = DB::table('users')->get();
+        return view('admin.manage_users', compact('users'));
+    }
+
+    public function showUsersDetails($id) {
+        $user = DB::table('users')->where('id', $id)->first();
+
+        return view('admin.user_details', compact('user'));
+    }
+
+    public function deleteUsers($id) {
+        DB::table('users')
+            ->where('id', $id)
+            ->delete();
+
+        return redirect()->route('admin.users.list')->with('delete', 'User deleted sucessfuly!');
+    }
+
+
+    public function updateUsers(Request $request){
+        //dd($request->all());
+
+        $request -> validate([
+            'name' => 'required|max:50',
+            'user_type' => 'required|max:50',
+        ]);
+
+        DB::table('users')
+            -> where('id', $request -> id)
+            -> update([
+                'name' => $request -> name,
+                'user_type' => $request -> user_type,
+            ]);
+        return redirect() -> route('admin.users.list') -> with('update', 'User updated successfully!');
+    }
 }
