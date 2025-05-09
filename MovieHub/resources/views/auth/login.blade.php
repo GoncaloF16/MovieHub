@@ -23,11 +23,18 @@
                     @enderror
                 </div>
 
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-3 position-relative">
                     <input id="password" type="password"
                            class="form-control @error('password') is-invalid @enderror"
                            name="password" required placeholder="Palavra-passe">
                     <label for="password">Palavra-passe</label>
+
+                    <button type="button"
+                            class="position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-transparent toggle-password"
+                            data-target="password" tabindex="-1">
+                        <i class="bi bi-eye"></i>
+                    </button>
+
                     @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
