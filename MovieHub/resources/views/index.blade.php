@@ -18,7 +18,7 @@
                     <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card movie-card">
                             <a href="{{ route('movie.show', $filme->titulo) }}">
-                                <img src="{{ $filme->capa }}" class="card-img-top" alt="{{ $filme->titulo }}">
+                                <img src="{{ Str::startsWith($filme->capa, ['http://', 'https://']) ? $filme->capa : asset('storage/' . $filme->capa) }}" class="card-img-top" alt="{{ $filme->titulo }}">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title text-center">{{ $filme->titulo }}</h5>

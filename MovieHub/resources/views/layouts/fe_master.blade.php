@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" data-bs-theme="light">
 <head>
+    @php use Illuminate\Support\Str; @endphp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MovieHub</title>

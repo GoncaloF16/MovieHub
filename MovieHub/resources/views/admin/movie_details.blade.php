@@ -4,7 +4,7 @@
     <br>
     <h5> Detalhes do Filme: {{ $movie ->titulo }} </h5> <br>
 
-<form method="POST" action="{{route('admin.movie.update')}}">
+<form method="POST" action="{{route('admin.movie.update')}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="hidden" name="id" value="{{ $movie ->id }}">
@@ -14,7 +14,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Capa</label>
-        <input name="capa" value="{{ $movie ->capa }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input name="capa_file" value="{{ $movie ->capa }}" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Trailer</label>

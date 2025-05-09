@@ -13,7 +13,7 @@
                 @foreach ($filmes as $filme)
                     <tr class="clickable-row" data-href="{{ route('movie.show', $filme->titulo) }}">
                         <td class="align-middle" style="border: none;">
-                            <img src="{{ $filme->capa }}" alt="{{ $filme->titulo }}" class="img-fluid rounded" style="width: 120px; height: 180px; object-fit: cover;">
+                            <img src="{{ Str::startsWith($filme->capa, ['http://', 'https://']) ? $filme->capa : asset('storage/' . $filme->capa) }}" class="img-fluid rounded" style="width: 120px; height: 180px; object-fit: cover;" alt="{{ $filme->titulo }}">
                         </td>
                         <td class="align-middle" style="border: none;">
                             {{ $filme->titulo }}

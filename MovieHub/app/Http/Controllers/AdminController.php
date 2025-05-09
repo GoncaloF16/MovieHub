@@ -34,22 +34,30 @@ class AdminController extends Controller
     public function addMovie() {
         return view('admin.add_movie');
     }
+
     public function storeMovie(Request $request) {
         $request -> validate([
             'titulo' => 'required|max:50',
-            'capa' => 'required|url',
             'trailer' => 'required|url',
             'duracao' => 'required|integer',
             'lancamento' => 'required|integer',
             'genero' => 'required|max:50',
             'realizador' => 'required|max:50',
-            'sinopse' => 'required|max:500',
+            'sinopse' => 'required|max:750',
             'imdb_rating' => 'required|max:50',
         ]);
 
+        $capaPath = null;
+
+        if ($request->hasFile('capa_file')) {
+            $capaPath = $request->file('capa_file')->store('capas', 'public');
+        } else {
+            return back()->withErrors(['capa_file' => 'É necessário fazer upload de uma imagem'])->withInput();
+        }
+
         DB::table('filmes')->insert([
             'titulo' => $request -> titulo,
-            'capa' => $request -> capa,
+            'capa' => $capaPath,
             'trailer' => $request -> trailer,
             'duracao' => $request -> duracao,
             'lancamento' => $request -> lancamento,
@@ -66,21 +74,30 @@ class AdminController extends Controller
 
         $request -> validate([
             'titulo' => 'required|max:50',
-            'capa' => 'required|url',
             'trailer' => 'required|url',
             'duracao' => 'required|integer',
             'lancamento' => 'required|integer',
             'genero' => 'required|max:50',
             'realizador' => 'required|max:50',
-            'sinopse' => 'required|max:500',
+            'sinopse' => 'required|max:750',
             'imdb_rating' => 'required|max:50',
         ]);
+
+        $filme = DB::table('filmes')->where('id', $request->id)->first();
+        $capaPath = $filme->capa;
+
+        if ($request->hasFile('capa_file')) {
+            $capaPath = $request->file('capa_file')->store('capas', 'public');
+        } else {
+            return back()->withErrors(['capa_file' => 'É necessário fazer upload de uma imagem'])->withInput();
+        }
+
 
         DB::table('filmes')
             -> where('id', $request -> id)
             -> update([
                 'titulo' => $request -> titulo,
-                'capa' => $request -> capa,
+                'capa' => $capaPath,
                 'trailer' => $request -> trailer,
                 'duracao' => $request -> duracao,
                 'lancamento' => $request -> lancamento,

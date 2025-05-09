@@ -4,15 +4,24 @@
     <br>
     <h5> Adicionar Filme </h5> <br>
 
-<form method="POST" action="{{route('admin.movie.store')}}">
+<form method="POST" action="{{route('admin.movie.store')}}" enctype="multipart/form-data">
     @csrf
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Título</label>
         <input required name="titulo"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Capa</label>
-        <input name="capa"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input name="capa_file" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Trailer</label>

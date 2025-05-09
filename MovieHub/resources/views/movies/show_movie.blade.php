@@ -4,7 +4,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4 text-center">
-            <img src="{{ $filme->capa }}" alt="{{ $filme->titulo }}" class="img-fluid rounded shadow">
+            <img src="{{ Str::startsWith($filme->capa, ['http://', 'https://']) ? $filme->capa : asset('storage/' . $filme->capa) }}" class="img-fluid rounded shadow" alt="{{ $filme->titulo }}">
+
         </div>
 
         <div class="col-md-8">
