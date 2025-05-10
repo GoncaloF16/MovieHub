@@ -84,14 +84,14 @@ class AdminController extends Controller
         ]);
 
         $filme = DB::table('filmes')->where('id', $request->id)->first();
+
         $capaPath = $filme->capa;
 
         if ($request->hasFile('capa_file')) {
             $capaPath = $request->file('capa_file')->store('capas', 'public');
         } else {
-            return back()->withErrors(['capa_file' => 'É necessário fazer upload de uma imagem'])->withInput();
-        }
-
+            $capaPath = $filme->capa;
+             }
 
         DB::table('filmes')
             -> where('id', $request -> id)

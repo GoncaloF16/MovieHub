@@ -1,7 +1,7 @@
 @extends('layouts.fe_master')
 
 @section('content')
-<div class="container py-5 mt-3">
+<div class="container py-3 mt-1">
     <h2 class="text-center mb-4">Meus Favoritos</h2>
 
     @if ($filmes->isEmpty())

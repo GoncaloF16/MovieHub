@@ -16,7 +16,19 @@
             <div class="row justify-content-center">
                 @foreach($filmes as $filme)
                     <div class="col-md-3 col-sm-6 mb-4">
-                        <div class="card movie-card">
+                        <div class="card movie-card position-relative">
+                            @auth
+                                <form action="{{ route('filmes.favorito', $filme->id) }}" method="POST"
+                                    class="favorito-form position-absolute top-0 end-0 m-2">
+                                    @csrf
+                                    <button type="submit" class="btn p-1 m-0 favorito-icon">
+                                        <span class="material-icons {{ auth()->user()->favoritos->contains($filme->id) ? 'text-danger' : 'text-white' }}">
+                                            favorite
+                                        </span>
+                                    </button>
+                                </form>
+                            @endauth
+
                             <a href="{{ route('movie.show', $filme->titulo) }}">
                                 <img src="{{ Str::startsWith($filme->capa, ['http://', 'https://']) ? $filme->capa : asset('storage/' . $filme->capa) }}" class="card-img-top" alt="{{ $filme->titulo }}">
                             </a>

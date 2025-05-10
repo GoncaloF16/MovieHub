@@ -4,7 +4,7 @@
     <br>
     <h5> Detalhes do Filme: {{ $movie ->titulo }} </h5> <br>
 
-<form method="POST" action="{{route('admin.movie.update')}}" enctype="multipart/form-data">
+<form id="updateMovieForm" method="POST" action="{{route('admin.movie.update')}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="hidden" name="id" value="{{ $movie ->id }}">
@@ -14,7 +14,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Capa</label>
-        <input name="capa_file" value="{{ $movie ->capa }}" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input name="capa_file" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Trailer</label>
@@ -44,7 +44,28 @@
         <label for="exampleInputEmail1" class="form-label">Rating IMDB</label>
         <input required name="imdb_rating" value ="{{ $movie ->imdb_rating }}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
-        <button type="submit" class="btn btn-warning">Atualizar</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmUpdateModal">
+            Atualizar
+        </button>
     </form>
     <br>
+
+    <div class="modal fade" id="confirmUpdateModal" tabindex="-1" aria-labelledby="confirmUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header bg-dark text-white rounded-top-4">
+                    <h5 class="modal-title" id="confirmUpdateModalLabel">Confirmar atualização</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    Tens a certeza que queres atualizar os dados do filme? <strong>{{ $movie->titulo }}</strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" id="confirmUpdateButton">Sim, atualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
