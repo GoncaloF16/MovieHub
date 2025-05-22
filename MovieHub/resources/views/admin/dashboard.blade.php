@@ -22,7 +22,23 @@
     <div class="row">
         <main role="main" class="col-md-12 px-md-4 pt-4">
             <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Filmes</h1>
+                <h1 class="h2 pe-3">Filmes</h1>
+                    <form action="{{ route('admin.users.list') }}" method="GET" class="d-flex flex-grow-1 me-3 position-relative">
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control pe-5"
+                            placeholder="Procurar filmes..."
+                            value="{{ request('search') }}"
+                        >
+                        <button
+                            class="btn position-absolute end-0 top-0 mt-1 me-1 px-2 py-1"
+                            type="submit"
+                            style="height: calc(100% - 0.5rem);"
+                        >
+                            <span class="material-icons">search</span>
+                        </button>
+                    </form>
                 <div class="d-flex gap-2">
                     <a href="{{ route('home') }}" class="btn btn-secondary d-flex align-items-center gap-2" title="Página Principal">
                         <span class="material-icons">home</span>

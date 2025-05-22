@@ -11,6 +11,7 @@ Route::redirect('/', '/home');
 
 Route::get('/home', [HomeController::class, 'index'])-> name('home');
 Route::get('movie/show/{id}', [HomeController::class, 'showMovie'])-> name('movie.show');
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])-> name('admin.dashboard');
     Route::get('admin/movie/show/{id}', [AdminController::class, 'showMovieDetails'])-> name('admin.movie.show');

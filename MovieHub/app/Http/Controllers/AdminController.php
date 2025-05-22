@@ -8,9 +8,16 @@ use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        $movies = DB::table('filmes') ->get();
+        $search = $request->input('search');
+            $query = DB::table('filmes');
+
+        if (!empty($search)) {
+            $query->where('titulo', 'like', '%' . $search . '%');
+        }
+
+        $movies = $query->get();
         foreach ($movies as $movie) {
             $movie->short_synopsis = Str::limit($movie->sinopse, 20, '...');
         }
@@ -109,8 +116,15 @@ class AdminController extends Controller
         return redirect() -> route('admin.dashboard') -> with('update', 'Movie updated successfully!');
     }
 
-    public function listUsers() {
-        $users = DB::table('users')->get();
+    public function listUsers(Request $request) {
+        $search = $request->input('search');
+        $query = DB::table('users');
+
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $users = $query->get();
         return view('admin.manage_users', compact('users'));
     }
 
