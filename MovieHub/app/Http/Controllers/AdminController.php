@@ -11,13 +11,13 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $search = $request->input('search');
-            $query = DB::table('filmes');
+        $query = DB::table('filmes');
 
         if (!empty($search)) {
             $query->where('titulo', 'like', '%' . $search . '%');
         }
 
-        $movies = $query->get();
+        $movies = $query ->paginate(10);
         foreach ($movies as $movie) {
             $movie->short_synopsis = Str::limit($movie->sinopse, 20, '...');
         }
@@ -124,7 +124,7 @@ class AdminController extends Controller
             $query->where('name', 'like', '%' . $search . '%');
         }
 
-        $users = $query->get();
+        $users = $query->paginate(10);
         return view('admin.manage_users', compact('users'));
     }
 

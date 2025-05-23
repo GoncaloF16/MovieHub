@@ -105,7 +105,9 @@
 
           </nav>
     </header>
-    @yield('content')
+
+    @yield('content') 
+
     <footer id="mainFooter" class="footer bg-dark text-light py-4 mt-auto">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 

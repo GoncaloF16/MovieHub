@@ -76,11 +76,13 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $users->appends(request()->except('page'))->links() }}
+                </div>
             </main>
         </div>
     </div>
 
-    <!-- Pop Up de Confirmação para o botão de apagar -->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
