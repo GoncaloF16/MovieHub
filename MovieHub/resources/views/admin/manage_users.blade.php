@@ -26,14 +26,20 @@
 
                     <form action="{{ route('admin.users.list') }}" method="GET"
                         class="d-flex position-relative flex-grow-1" style="min-width: 250px;">
-                        <input type="text" name="search" class="form-control pe-5" placeholder="Procurar utilizadores..."
-                            value="{{ request('search') }}">
+                        <input type="text" name="search" class="form-control pe-5"
+                            placeholder="Procurar utilizadores..." value="{{ request('search') }}">
                         <button class="btn position-absolute end-0 top-0 mt-1 me-1 px-2 py-1" type="submit"
                             style="height: calc(100% - 0.5rem);">
                             <span class="material-icons">search</span>
                         </button>
                     </form>
+
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary d-flex align-items-center gap-2">
+                        <span class="material-icons">arrow_back</span> Voltar
+                    </a>
+
                 </div>
+
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead class="thead-dark">

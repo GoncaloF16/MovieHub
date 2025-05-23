@@ -235,3 +235,9 @@ a:hover {
     background-color: #007bff;
     color: white;
 }
+
+.chart-card-body {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}

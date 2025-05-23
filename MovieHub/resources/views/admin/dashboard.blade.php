@@ -23,7 +23,7 @@
         <main role="main" class="col-md-12 px-md-4 pt-4">
             <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h2 pe-3">Filmes</h1>
-                    <form action="{{ route('admin.users.list') }}" method="GET" class="d-flex flex-grow-1 me-3 position-relative">
+                    <form action="{{ route('admin.dashboard') }}" method="GET" class="d-flex flex-grow-1 me-3 position-relative">
                         <input
                             type="text"
                             name="search"

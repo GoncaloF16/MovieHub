@@ -2,19 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Filme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Filme;
 
 class ProfileController extends Controller
 {
     public function showUser() {
         $ourUser = Auth::user();
-        return view('users.profile', compact('ourUser'));
-    }
 
+        $favoritosPorMes = DB::table('favoritos')
+        ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as mes, COUNT(*) as total')
+        ->where('user_id', $ourUser->id)
+        ->groupBy('mes')
+        ->orderBy('mes')
+        ->pluck('total', 'mes');
+
+        $months = collect();
+        for ($i = 5; $i >= 0; $i--) {
+            $months->push(Carbon::now()->subMonths($i)->format('Y-m'));
+        }
+
+        $favoritosPorMes = $months->mapWithKeys(function ($month) use ($favoritosPorMes) {
+            return [$month => $favoritosPorMes->get($month, 0)];
+        });
+
+        return view('users.profile', [
+            'user' => $ourUser,
+            'favoritosPorMes' => $favoritosPorMes,
+        ]);
+    }
 
     public function updateUser(Request $request) {
         $request->validate([
