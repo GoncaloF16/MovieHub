@@ -45,9 +45,13 @@ php artisan migrate
 
 php artisan serve
 
+---
+
 ## 👤 Author
 
 Developed by Gonçalo Ferreira
+
+---
 
 ## 🚧 Status
 
